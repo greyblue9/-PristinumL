@@ -45,22 +45,6 @@ class Parser:
         while not self.IsAtEnd():
             if self.previous().type == TT.SEMICOLON:
                 return ";"
-            if a == TT.CLASS:
-                pass
-            if a == TT.DEF:
-                pass
-            if a == TT.VAR:
-                pass
-            if a == TT.FOR:
-                pass
-            if a == TT.IF:
-                pass
-            if a == TT.WHILE:
-                pass
-            if a == TT.PRINT:
-                pass
-            if a == TT.RETURN:
-                pass
             return ";"
         self.advance()
 
