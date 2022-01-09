@@ -1,9 +1,17 @@
 |||PristiniumL|||
 
-PristiniumL(or simply Pristinium) is a high-level, one of a kind interpreted language designed for making languages, it's a unique object-oriented language made in
-python, following the style of Python and Haskell(indents instead of braces for scopes and a simple, easy to learn syntax while also being extremely versatile)
-along with the comforting and useful features of Java and C++. We all know that the most popular choices for creating languages are Java and C++ but have you ever 
-wondered why? Because of things Python and other languages don't have such as more intricate classes and easy use of the Visitor Pattern, sure python is really nice 
+PristiniumL(or simply Pristinium) is a high-level, one of a kind interpreted language designed for making languages. 
+
+It's a unique object-oriented language made in Python, following the style of Python and Haskell in the following ways:
+  - Using indents instead of braces for scopes  (a simple syntax that's easy to learn and also versatile!)
+  - Provides the battle-tested and proven features common to Java and C++.
+  - Final modifier (so classes are "closed for modification")
+  - Designed with easy application of Visitor pattern in mind
+ 
+We all know that Java and C++ are among the most popular programming languages, but have you ever 
+wondered why? 
+
+Because of things Python and other languages don't have such as more intricate classes and easy use of the Visitor Pattern, sure python is really nice 
 to code in with the object-oriented-programming and satisfying tab button for whenever you want to define scopes rather than clunky braces but does it really have 
 what you need to make a programming language without copious amounts of stress? The answer is no. With this new language, we eliminate that stress and tedious
 effort, by adding utilities from Java and C++ such as the *final* modifier or *.Visitor* dot notation method as well as adding some of our own neat syntax, once you
@@ -12,46 +20,48 @@ use Pristinium, you won't want to stop.
 EXAMPLE:
 
 java:
+```java
+class Interpreter implements Expr.Visitor<Object> {
 
-*class Interpreter implements Expr.Visitor<Object> {
-}*
-  *@Override
+  @Override
   public Object visitLiteralExpr(Expr.Literal expr) {
     return expr.value;
-  }*
-   *@Override
+  }
+  @Override
   public Object visitGroupingExpr(Expr.Grouping expr) {
     return evaluate(expr.expression);
-  }*
-    *private Object evaluate(Expr expr) {
+  }
+  private Object evaluate(Expr expr) {
     return expr.accept(this);
-  }*
-  
- Python:
-  
-  *from abc import abstractmethod*
-  *class interpreter:*
-      *@abstractmethod*
-      *def accept(self, visitor):*
-          *pass*
-      *def VisitLiteralExpr(self, expr):*
-          *return expr.value*
-      *def VisitGroupingExpr(self, expr):*
-          *return self.evaluate(expr.expression)*
-      *def evaluate(self, expr):*
-          *return expr.accept(self)*
-  
-  Prestinium:
-  
-  *class Interpreter/Visitor:*
-    *PUBLIC def VisitLiteralExpr(this, expr):*
-      *return expr.val*
-    *PUBLIC def VisitGroupingExpr(this, expr):*
-          *return this.evaluate(expr.expression)*
-    *PUBLIC def evaluate(this, expr):*
-          *return expr.accept(this)*
-    
+  }
+}
+```
+ 
+Python:
+```py
+from abc import abstractmethod
+class interpreter:
+      @abstractmethod
+      def accept(self, visitor):
+          pass
+      def VisitLiteralExpr(self, expr):
+          return expr.value*
+      def VisitGroupingExpr(slf, expr):
+          return self.evaluate(expr.expression)*
+      def evaluate(self, expr):
+          return expr.accept(self)
+```
 
+Prestinium:
+```kotlin
+class Interpreter/Visitor:
+    PUBLIC def VisitLiteralExpr(this, expr):
+      return expr.val
+    PUBLIC def VisitGroupingExpr(this, expr):
+      return this.evaluate(expr.expression)
+    PUBLIC def evaluate(this, expr):
+      return expr.accept(this)
+```
 
 Visitor pattern is a really powerful and widely-used way of solving the Expression Problem, a problem with the concept of creating languages which has plagued 
 language hackers for decades. As I was writing this language, I used Visitor pattern in my code and by lord it is not fun in python and most other languages,
